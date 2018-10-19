@@ -1,0 +1,4 @@
+target/
+/src/test/java/Project_WSM/InformationTest.java
+/.idea/*
+/test-output/*
