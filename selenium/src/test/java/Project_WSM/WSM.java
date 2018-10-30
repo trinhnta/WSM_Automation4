@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class WSM {
     public WebDriver driver;
     public final int TIME_OUT = 20;
-    public final String url_WSM = "https://wsm.framgia.vn/en";
+    public final String url_WSM = "https://edev.framgia.vn";
     public final String url_OverTime = "https://wsm.framgia.vn/en/dashboard/users/367/request_ots";
     public final String login_btn = "//a[@class='wsm-btn btn-login']";
     public final String user_password = "//input[@id='user_password']";
@@ -28,6 +28,8 @@ public class WSM {
     public final String branchTextbox = "//span[@id='select2-chosen-1']";
     public final String groupLabel = "//label[text()='Group']";
     public final String groupTextbox = "//span[@id='select2-chosen-2']";
+    public final String groupDropDown = "//span[@id='select2-chosen-3']";
+    public final String optionDropDown = "//div[@role='option']";
     public final String checkboxOT = "//span[text()='Do you OT for other group?']";
     public final String projectLabel = "//label[text()='Project']";
     public final String projectTextbox = "//input[@id='request_ot_project_name']";
@@ -37,12 +39,32 @@ public class WSM {
     public final String toTextbox = "//input[@id='request_ot_end_time']";
     public final String reasonLabel = "//label[text()='Reason']";
     public final String reasonTextbox = "//textarea[@id='request_ot_reason']";
+    public final String saveBtn = "//input[@value='Save']";
 
+    public final String employeeXpath = "//tbody[@class='list-request-ots']//td[1]";
+    public final String staffNameXpath = "//tbody[@class='list-request-ots']//td[2]";
+    public final String dateOfCreationXpath = "//tbody[@class='list-request-ots']//td[3]";
+    public final String fromXpath = "//tbody[@class='list-request-ots']//td[4]";
+    public final String toXpath = "//tbody[@class='list-request-ots']//td[5]";
+    public final String projectNameXpath = "//tbody[@class='list-request-ots']//td[6]";
+    public final String reasonXpath = "//tbody[@class='list-request-ots']//td[7]";
+    public final String statusXpath = "//tbody[@class='list-request-ots']//td[8]";
+    public final String beingHandledByXpath = "//tbody[@class='list-request-ots']//td[9]";
+    public final String requestHoursXpath = "//tbody[@class='list-request-ots']//td[10]";
+
+    public final String error = "//li[@class='text-danger']";
+    public final String errorProjectName = "//div[@id='request_ot_project_name-error']";
+    public final String errorFrom = "//div[@id='request_ot_from_time-error']";
+    public final String errorTo = "//div[@id='request_ot_end_time-error']";
+    public final String errorReason = "//div[@id='request_ot_reason-error']";
     public final String actual01 = "//h1[contains(text(),'Request overtime')]";
     public final String actual03 = "//h3[contains(text(),'New request for overtime')]";
     public final Boolean expect = true;
     public Boolean actual;
     public String actualText;
+
+    public String img = "//img[@src='/assets/user_avatar_default-bc6c6c40940226d6cf0c35571663cd8d231a387d5ab1921239c2bd19653987b2.png']";
+    public String btLogout = "//a[@class='button-logout']";
 
 
     void loginWSM() throws InterruptedException {
@@ -56,6 +78,16 @@ public class WSM {
 
     void clickAction(String element) {
         driver.findElement(By.xpath(element)).click();
+
+    }
+
+    void clearText(String element) {
+        driver.findElement(By.xpath(element)).clear();
+
+    }
+
+    String gettext(String element) {
+        return driver.findElement(By.xpath(element)).getText();
 
     }
 
@@ -78,6 +110,7 @@ public class WSM {
     }
 
     void sleep(int time) throws InterruptedException {
-        Thread.sleep(time * 500);
+        Thread.sleep(time * 100);
     }
+
 }

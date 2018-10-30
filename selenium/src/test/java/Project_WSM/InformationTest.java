@@ -1,12 +1,12 @@
 package Project_WSM;
 
-public class InformationTestCopy {
+public class InformationTest {
 
-    public static final String email = "email";
-    public static final String password = "password";
-    public static final String staff_name = "staff_name";
-    public static final String staff_code = "staff_code";
-    public static final String branch = "Da Nang Office";
+    public static final String email = "nguyen.thi.hang@framgia.com.edev";
+    public static final String password = "123456";
+    public static final String staffName = "Nguyen Thi Hang";
+    public static final String staffCode = "B121259";
+    public static final String branch = "Handico Office";
     public static final String group[] = {"Software Development Division HIGH/Section 1/Qa1", "Choose Group", "Software Development Division 1", "Software Development Division 3",
             "Design & Marketing Division", "CEO's Office", "Human Development Division", "Back Office", "Founder", "Human Resource"};
 
@@ -29,5 +29,15 @@ public class InformationTestCopy {
     public static final String datatest17[] = {"FFL x FVN QONECT APP", "2018/10/22 18:00", "2018/10/22 21:00", "Test"};
     public static final String ouput17[] = {"B121259", "Nguyen Thi Hang", "10-29-2018", "18:00 10-22-2018", "21:00 10-22-2018", "FFL x FVN QONECT APP", "Test", "Pending",
             "Software Development Division HIGH(Nguyen Xuan Son, Dinh Thanh Tam, Vu Bui Nhat Uyen)", "3.0"};
+    public static final String datatest18[] = {"FFL x FVN QONECT APP", "2018/07/03 18:00", "2018/07/03 21:00", "Test"};
+    public static final String msgOutput18 = "Timekeeping data of 7/2018 is not available, you can not access for this month!";
+    public static final String datatest19[] = {"", "2018/10/22 18:00", "2018/10/22 21:00", "Test"};
+    public static final String msgOutput19 = "Project can not be blank.";
+    public static final String datatest20[] = {"FFL x FVN QONECT APP", "", "2018/10/22 21:00", "Test"};
+    public static final String msgOutput20 = "From time not be blank";
+    public static final String datatest21[] = {"FFL x FVN QONECT APP", "2018/10/22 18:00", "", "Test"};
+    public static final String msgOutput21 = "End time not be blank";
+    public static final String datatest22[] = {"FFL x FVN QONECT APP", "2018/10/22 18:00", "2018/10/22 21:00", ""};
+    public static final String msgOutput22 = "Reason not be blank";
 
 }
