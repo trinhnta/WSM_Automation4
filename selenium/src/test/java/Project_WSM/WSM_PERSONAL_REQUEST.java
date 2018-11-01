@@ -323,8 +323,6 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(actual, expect);
         actualText = gettext(error);
         Assert.assertEquals(actualText, InformationTest.msgOutput18);
-        sleep(5);
-
     }
 
     @Test(priority = 18)
@@ -343,8 +341,6 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(actual, expect);
         actualText = gettext(errorProjectName);
         Assert.assertEquals(actualText, InformationTest.msgOutput19);
-        sleep(5);
-
     }
 
     @Test(priority = 19)
@@ -359,7 +355,6 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(actual, expect);
         actualText = gettext(errorFrom);
         Assert.assertEquals(actualText, InformationTest.msgOutput20);
-        sleep(5);
     }
 
     @Test(priority = 20)
@@ -374,7 +369,6 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(actual, expect);
         actualText = gettext(errorTo);
         Assert.assertEquals(actualText, InformationTest.msgOutput21);
-        sleep(5);
     }
 
     @Test(priority = 21)
@@ -392,8 +386,6 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(actual, expect);
         actualText = gettext(errorReason);
         Assert.assertEquals(actualText, InformationTest.msgOutput22);
-        sleep(5);
-
     }
 
     @BeforeMethod
