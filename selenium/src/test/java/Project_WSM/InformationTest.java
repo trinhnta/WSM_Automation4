@@ -2,6 +2,7 @@ package Project_WSM;
 
 public class InformationTest {
 
+    //Infor of user WSM
     public static final String email = "nguyen.thi.hang@framgia.com.edev";
     public static final String password = "123456";
     public static final String staffName = "Nguyen Thi Hang";
@@ -10,7 +11,7 @@ public class InformationTest {
     public static final String group[] = {"Software Development Division HIGH/Section 1/Qa1", "Choose Group", "Software Development Division 1", "Software Development Division 3",
             "Design & Marketing Division", "CEO's Office", "Human Development Division", "Back Office", "Founder", "Human Resource"};
 
-
+    //Infor of data test
     public static final String datatest11[] = {"FFL x FVN QONECT APP", "2018/10/27 09:00", "2018/10/27 12:00", "Test"};
     public static final String ouput11[] = {"B121259", "Nguyen Thi Hang", "10-29-2018", "09:00 10-29-2018", "12:00 10-29-2018", "FFL x FVN QONECT APP", "Test", "Pending",
             "Software Development Division HIGH(Nguyen Xuan Son, Dinh Thanh Tam, Vu Bui Nhat Uyen)", "3.0"};
