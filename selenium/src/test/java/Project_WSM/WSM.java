@@ -72,7 +72,38 @@ public class WSM {
     public final String errorTo = "//div[@id='request_ot_end_time-error']";
     public final String errorReason = "//div[@id='request_ot_reason-error']";
     public final String actual03 = "//h3[contains(text(),'New request for overtime')]";
+    
+   //variables in logout
+    public String img = "//img[@src='/assets/user_avatar_default-bc6c6c40940226d6cf0c35571663cd8d231a387d5ab1921239c2bd19653987b2.png']";
+    public String btLogout = "//a[@class='button-logout']";
+    
+    //Url
+    public String tryUrl ="https://edev.framgia.vn/en/dashboard/user_settings/edit";
+    public String tryUrl1 = "https://edev.framgia.vn/en/dashboard/import_timesheets";
+    
+    //message 
+    public String expected_msgEmailPassword = "Invalid email or password.";
+    public String expected_msgEmail = "Please enter a valid email address";
+    public String expected_msgEmailnull = "Email is required";
+    public String expected_msgPwlnull = "Password is required";
+    public String expected_msgLogin = "Signed in successfully.";
+    
+    public String expected_msgLogout ="Signed out successfully.";
+    public String expected_msgTrylogin ="You need to sign in or sign up before continuing.";
+    
+    //variables in login
+    public String remember = "//label[@class ='checkbox-remember']";  
+    public String btCancel = "//a[@class='wsm-btn login-cancel']']";  
+    public String forgotpw = "//a[@class='btn-forgot-password']";  
+    
+    //variable message
+    public String msgError = "//p[@class='alert alert-danger']";
+    public String msgEmail ="//p[@for='user_email']";
+    public String msgPassword ="//p[@for='user_password']";
+    public String flashmsg ="//div[@id='flash-message']";
 
+    public String expectedTitle = "Your timesheet | Working space";
+    
     void loginWSM() throws InterruptedException {
         clickAction(login_btn);
         wait_TimeOut();
