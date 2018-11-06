@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+	<test name="ProjectWSM">
+		<classes>
+			<class name="Project_WSM.WSM_PERSONAL_REQUEST" />
+		</classes>
+	</test>
+</suite>

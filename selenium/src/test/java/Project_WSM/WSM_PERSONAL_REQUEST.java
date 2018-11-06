@@ -390,7 +390,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
 
     @BeforeMethod
     void openBrowser() {
-        System.setProperty("webdriver.chrome.driver", "src/lib/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/lib/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(url_WSM);
         wait_TimeOut();
