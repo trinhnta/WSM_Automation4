@@ -1,19 +1,16 @@
 package Project_WSM;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class WSM_PERSONAL_REQUEST extends WSM {
 
-
+    //Verify that "Request overtime" screen displays when clicking on "Overtime" link
     @Test(priority = 0)
     void PER_REQ_OT_001() throws InterruptedException {
         loginWSM();
@@ -21,18 +18,20 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         clickAction(personal_request);
         clickAction(overtime);
         actual = check_visibleElement(actual01);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
     }
 
+    //Verify that "Login" screen displays when accessing to "Overime" screen without Login session
     @Test(priority = 1)
     void PER_REQ_OT_002() {
         driver.get(url_OverTime);
         wait_TimeOut();
         wait_element(login_btn);
         actual = check_visibleElement(login_btn);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
     }
 
+    //Verify that "New request for overtime" screen displays when clicking on "Create" btn
     @Test(priority = 02)
     void PER_REQ_OT_003() throws InterruptedException {
         loginWSM();
@@ -41,71 +40,80 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         clickAction(overtime);
         wait_element(create_overtime);
         clickAction(create_overtime);
-        actual = check_visibleElement(actual03);
-        Assert.assertEquals(actual, expect);
+        actual = check_visibleElement(newRequestScr);
+        Assert.assertEquals(actual, expectTrue);
     }
 
+    //Verify that the "New request for overtime" screen contains elements...
     @Test(priority = 03)
     void PER_REQ_OT_004() throws InterruptedException {
         PER_REQ_OT_003();
         actual = check_visibleElement(staff_nameLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(staff_nameTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(staff_codeLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(staff_codeTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(branchLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(branchTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(groupLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(groupTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(checkboxOT);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(projectLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(projectTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(fromLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(fromTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(toLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(toTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(reasonLabel);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actual = check_visibleElement(reasonTextbox);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
     }
 
+    //Verify that “Do you OT for other group?” checkbox is unselected by default
     @Test(priority = 04)
     void PER_REQ_OT_005() throws InterruptedException {
         PER_REQ_OT_003();
         if (driver.findElement(By.xpath(checkboxOT)).isSelected()) actual = false;
         else actual = true;
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
     }
 
+    //Verify that "Staff name" data is correct and uneditable
     @Test(priority = 05)
     void PER_REQ_OT_006() throws InterruptedException {
         PER_REQ_OT_003();
         actualText = driver.findElement(By.xpath(staff_nameTextbox)).getAttribute("value");
+        actualDisabled = driver.findElement(By.xpath(staff_nameTextbox)).getAttribute("disabled");
         Assert.assertEquals(actualText, InformationTest.staffName);
+        Assert.assertEquals(actualDisabled, disbaleTrue);
     }
 
+    //Verify that "Staff code" data is correct and uneditable
     @Test(priority = 06)
     void PER_REQ_OT_007() throws InterruptedException {
         PER_REQ_OT_003();
         actualText = driver.findElement(By.xpath(staff_codeTextbox)).getAttribute("value");
+        actualDisabled = driver.findElement(By.xpath(staff_codeTextbox)).getAttribute("disabled");
         Assert.assertEquals(actualText, InformationTest.staffCode);
+        Assert.assertEquals(actualDisabled, disbaleTrue);
     }
 
+    //Verify that "Branch" data is correct
     @Test(priority = 07)
     void PER_REQ_OT_008() throws InterruptedException {
         PER_REQ_OT_003();
@@ -113,15 +121,17 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(actualText, InformationTest.branch);
     }
 
+    //Verify that "Group" dropdown list displays when checking on "Do you OT for other group” checkbox
     @Test(priority = 8)
     void PER_REQ_OT_009() throws InterruptedException {
         PER_REQ_OT_003();
         clickAction(checkboxOT);
         wait_element(groupDropDown);
         actual = check_visibleElement(groupDropDown);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
     }
 
+    //Verify that "Group" dropdown list displays with correct data when clicking on "Group" dropdown list
     @Test(priority = 9)
     void PER_REQ_OT_010() throws InterruptedException {
         PER_REQ_OT_003();
@@ -150,6 +160,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(actualText, InformationTest.group[9]);
     }
 
+    //Verify that users can create an OT request successfully without  selecting "Do you OT for other group?' checkbox
     @Test(priority = 10)
     void PER_REQ_OT_011() throws InterruptedException {
         PER_REQ_OT_003();
@@ -174,6 +185,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(gettext(requestHoursXpath), InformationTest.ouput11[9]);
     }
 
+    //Verify that users can create an OT request successfully when selecting "Do you OT for other group?' checkbox
     @Test(priority = 11)
     void PER_REQ_OT_012() throws InterruptedException {
         PER_REQ_OT_003();
@@ -199,6 +211,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(gettext(requestHoursXpath), InformationTest.ouput12[9]);
     }
 
+    //Verify that users can create an OT request successfully with time in current month
     @Test(priority = 12)
     void PER_REQ_OT_013() throws InterruptedException {
         PER_REQ_OT_003();
@@ -223,6 +236,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(gettext(requestHoursXpath), InformationTest.ouput13[9]);
     }
 
+    //Verify that users can create an OT request successfully with time in the future
     @Test(priority = 13)
     void PER_REQ_OT_014() throws InterruptedException {
         PER_REQ_OT_003();
@@ -247,6 +261,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(gettext(requestHoursXpath), InformationTest.ouput14[9]);
     }
 
+    //Verify that system redirects to "Request overtime"  screen after creating a new OT request successfully
     @Test(priority = 14)
     void PER_REQ_OT_015() throws InterruptedException {
         PER_REQ_OT_003();
@@ -261,10 +276,11 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         wait_TimeOut();
         wait_element(actual01);
         actual = check_visibleElement(actual01);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
 
     }
 
+    //Verify that the latest OT request displays at the top of the OT list
     @Test(priority = 15)
     void PER_REQ_OT_016() throws InterruptedException {
         PER_REQ_OT_003();
@@ -283,6 +299,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
 
     }
 
+    //Verify that OT request data displays correct at the OT list
     @Test(priority = 16)
     void PER_REQ_OT_017() throws InterruptedException {
         PER_REQ_OT_003();
@@ -307,6 +324,7 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         Assert.assertEquals(gettext(requestHoursXpath), InformationTest.ouput17[9]);
     }
 
+    //Verify that User is not able to create new request with time in the past
     @Test(priority = 17)
     void PER_REQ_OT_018() throws InterruptedException {
         PER_REQ_OT_003();
@@ -320,11 +338,12 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         clickAction(saveBtn);
         wait_element(error);
         actual = check_visibleElement(error);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actualText = gettext(error);
         Assert.assertEquals(actualText, InformationTest.msgOutput18);
     }
 
+    //Verify that User is not able to create new request without entering "Project" info
     @Test(priority = 18)
     void PER_REQ_OT_019() throws InterruptedException {
         PER_REQ_OT_003();
@@ -338,11 +357,12 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         clickAction(saveBtn);
         wait_element(errorProjectName);
         actual = check_visibleElement(errorProjectName);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actualText = gettext(errorProjectName);
         Assert.assertEquals(actualText, InformationTest.msgOutput19);
     }
 
+    //Verify that User is not able to create new request without entering "From" info
     @Test(priority = 19)
     void PER_REQ_OT_020() throws InterruptedException {
         PER_REQ_OT_003();
@@ -352,11 +372,12 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         clickAction(saveBtn);
         wait_element(errorFrom);
         actual = check_visibleElement(errorFrom);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actualText = gettext(errorFrom);
         Assert.assertEquals(actualText, InformationTest.msgOutput20);
     }
 
+    //Verify that User is not able to create new request without entering "To" info
     @Test(priority = 20)
     void PER_REQ_OT_021() throws InterruptedException {
         PER_REQ_OT_003();
@@ -366,11 +387,12 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         clickAction(saveBtn);
         wait_element(errorTo);
         actual = check_visibleElement(errorTo);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actualText = gettext(errorTo);
         Assert.assertEquals(actualText, InformationTest.msgOutput21);
     }
 
+    //Verify that User is not able to create new request without entering "Reason" info
     @Test(priority = 21)
     void PER_REQ_OT_022() throws InterruptedException {
         PER_REQ_OT_003();
@@ -383,13 +405,93 @@ public class WSM_PERSONAL_REQUEST extends WSM {
         clickAction(saveBtn);
         wait_element(errorReason);
         actual = check_visibleElement(errorReason);
-        Assert.assertEquals(actual, expect);
+        Assert.assertEquals(actual, expectTrue);
         actualText = gettext(errorReason);
         Assert.assertEquals(actualText, InformationTest.msgOutput22);
     }
 
+    //Verify that User is not able to create new request with time is duplicated with another OT request
+    @Test(priority = 22)
+    void PER_REQ_OT_023() throws InterruptedException {
+        PER_REQ_OT_003();
+        send_keys(projectTextbox, InformationTest.datatest23[0]);
+        send_keys(fromTextbox, InformationTest.datatest23[1]);
+        clickAction(toTextbox);
+        sleep(1);
+        clearText(toTextbox);
+        send_keys(toTextbox, InformationTest.datatest23[2]);
+        send_keys(reasonTextbox, InformationTest.datatest23[3]);
+        clickAction(saveBtn);
+        wait_TimeOut();
+        clickAction(create_overtime);
+        send_keys(projectTextbox, InformationTest.datatest23[0]);
+        send_keys(fromTextbox, InformationTest.datatest23[1]);
+        clickAction(toTextbox);
+        sleep(1);
+        clearText(toTextbox);
+        send_keys(toTextbox, InformationTest.datatest23[2]);
+        send_keys(reasonTextbox, InformationTest.datatest23[3]);
+        clickAction(saveBtn);
+        wait_element(error);
+        actualText = gettext(error);
+        Assert.assertEquals(actualText, InformationTest.msgOutput23);
+    }
+
+    //Verify that User is not able to create new request with time is in working time
+    @Test(priority = 23)
+    void PER_REQ_OT_024() throws InterruptedException {
+        PER_REQ_OT_003();
+        send_keys(projectTextbox, InformationTest.datatest24[0]);
+        send_keys(fromTextbox, InformationTest.datatest24[1]);
+        clickAction(toTextbox);
+        sleep(1);
+        clearText(toTextbox);
+        send_keys(toTextbox, InformationTest.datatest24[2]);
+        send_keys(reasonTextbox, InformationTest.datatest24[3]);
+        clickAction(saveBtn);
+        wait_element(error);
+        actualText = gettext(error);
+        Assert.assertEquals(actualText, InformationTest.msgOutput24);
+    }
+
+    //Verify that User is not taken to another screen if there are any error occurs
+    @Test(priority = 24)
+    void PER_REQ_OT_025() throws InterruptedException {
+        PER_REQ_OT_003();
+        send_keys(projectTextbox, InformationTest.datatest25[0]);
+        send_keys(fromTextbox, InformationTest.datatest25[1]);
+        clickAction(toTextbox);
+        sleep(1);
+        clearText(toTextbox);
+        send_keys(toTextbox, InformationTest.datatest25[2]);
+        send_keys(reasonTextbox, InformationTest.datatest25[3]);
+        clickAction(saveBtn);
+        actual = check_visibleElement(newRequestScr);
+        Assert.assertEquals(actual, expectTrue);
+    }
+
+    //Verify that OT request is not display in the OT list after creating a new request failed
+    @Test(priority = 25)
+    void PER_REQ_OT_026() throws InterruptedException {
+        PER_REQ_OT_003();
+        send_keys(projectTextbox, InformationTest.datatest26[0]);
+        send_keys(fromTextbox, InformationTest.datatest26[1]);
+        clickAction(toTextbox);
+        sleep(1);
+        clearText(toTextbox);
+        send_keys(toTextbox, InformationTest.datatest26[2]);
+        send_keys(reasonTextbox, InformationTest.datatest26[3]);
+        clickAction(saveBtn);
+        clickAction(personal_request);
+        clickAction(overtime);
+        actualText = driver.findElement(By.xpath(reasonXpath)).getText();
+        Assert.assertNotEquals(actualText, InformationTest.datatest26[3]);
+    }
+
     @BeforeMethod
     void openBrowser() {
+        //for Ubuntu System.setProperty("webdriver.chrome.driver", "src/lib/chromedriver");
+        //for windown
         System.setProperty("webdriver.chrome.driver", "src/lib/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(url_WSM);
